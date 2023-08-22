@@ -17,7 +17,6 @@ const Nota = sequelize.define("Nota", {
     },
     corDeFundo: {
         type: DataTypes.STRING(7),
-        defaultValue: '#FFFFFF',
         allowNull: false
     }
 });

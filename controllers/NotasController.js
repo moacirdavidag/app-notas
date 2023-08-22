@@ -19,20 +19,24 @@ module.exports = {
 
         try {
 
-            const { titulo, descricao, cor } = req.body;
+            const { titulo, descricao, corDeFundo } = req.body;
 
             if (titulo === null || titulo.length === 0) {
-                throw new Error('É preciso informar um título!');
+                throw new Error('Escreva um título');
             }
 
             if (descricao === null || descricao.length === 0) {
-                throw new Error('É preciso informar uma descrição para a nota!');
+                throw new Error('Escreva uma descrição');
+            }
+
+            if (corDeFundo === "null") {
+                throw new Error('Escolha uma cor de fundo');
             }
 
             const nota = {
                 titulo,
                 descricao,
-                cor
+                corDeFundo
             };
 
             const notaCriada = await Nota.create(nota);
@@ -40,7 +44,7 @@ module.exports = {
             return res.status(201).send(notaCriada);
 
         } catch (e) {
-            return res.status(400).send(`Ocorreu um erro: ${e.message}`);
+            return res.status(400).send(`${e.message}`);
         }
 
     },

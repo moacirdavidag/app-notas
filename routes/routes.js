@@ -15,8 +15,8 @@ router.get('/api/notas', NotasController.listarNotas);
 
 router.post('/api/nota', NotasController.criarNota);
 
-router.delete('/api/nota/:id', NotasController.deletarNota);
+router.post('/api/deletarnota/:id', NotasController.deletarNota);
 
-router.put('/api/nota/:id', NotasController.atualizarNota);
+router.put('/api/atualizarnota/:id', NotasController.atualizarNota);
 
 module.exports = router;

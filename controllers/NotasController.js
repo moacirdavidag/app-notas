@@ -9,12 +9,12 @@ module.exports = {
             const notas = await Nota.findAll();
             return res.status(200).send(notas);
 
-        } catch(e) {
+        } catch (e) {
             return res.status(400).send(`Ocorreu um erro: ${e.message}`);
         }
 
     },
-    
+
     criarNota: async (req, res) => {
 
         try {
@@ -39,9 +39,9 @@ module.exports = {
                 corDeFundo
             };
 
-            const notaCriada = await Nota.create(nota);
+            await Nota.create(nota);
 
-            return res.status(201).send(notaCriada);
+            return res.status(201).send("Nota criada com sucesso!");
 
         } catch (e) {
             return res.status(400).send(`${e.message}`);
@@ -55,19 +55,23 @@ module.exports = {
 
             const { id } = req.params;
 
-            const nota = await Nota.findOne({where: {
-                id
-            }});
+            const nota = await Nota.findOne({
+                where: {
+                    id
+                }
+            });
 
-            if(!nota) {
+            if (!nota) {
                 throw new Error("Essa nota não existe!");
             }
 
-            const notaExcluida = await Nota.destroy({where: {
-                id
-            }});
+            await Nota.destroy({
+                where: {
+                    id
+                }
+            });
 
-            return res.status(200).send(notaExcluida);
+            return res.status(200).send("Nota excluída com sucesso");
 
         } catch (e) {
             return res.status(400).send(`Ocorreu um erro: ${e.message}`);
@@ -83,11 +87,13 @@ module.exports = {
 
             const { titulo, descricao, cor } = req.body;
 
-            const nota = await Nota.findOne({where: {
-                id
-            }});
+            const nota = await Nota.findOne({
+                where: {
+                    id
+                }
+            });
 
-            if(!nota) {
+            if (!nota) {
                 throw new Error("Essa nota não existe!");
             };
 

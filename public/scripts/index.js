@@ -104,10 +104,9 @@ const exibirMensagem = (status, mensagem) => {
     mensagemDiv.style.display = "block";
     mensagemDiv.textContent = mensagem;
 
-    if (status === true) {
+    if (status) {
         mensagemDiv.classList.remove('text-danger', 'border-danger');
         mensagemDiv.classList.add('text-center', 'text-success', 'border', 'border-success');
-        mensagemDiv.textContent = 'Nota criada com sucesso';
     } else {
         mensagemDiv.classList.remove('text-success', 'border-success');
         mensagemDiv.classList.add('text-center', 'text-danger', 'border', 'border-danger');
